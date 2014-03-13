@@ -1,0 +1,27 @@
+.bigg-likes {
+	background: url(../img/like.png) no-repeat 80% 45%;
+	display: inline-block;
+	margin-bottom: 10px;
+	background-size: 15px 15px;
+	-webkit-background-size: 15px 15px;
+	text-decoration: none;
+}
+.bigg-likes:hover span.bigg-likes-count {
+	color: #009EDE;	
+}
+.bigg-likes:hover,
+.bigg-likes.active {
+	background: url(../img/like_active.png) no-repeat 80% 45%;
+	text-decoration: none;
+	background-size: 15px 15px;
+	-webkit-background-size: 15px 15px;
+	text-decoration:none;
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+.bigg-blog-widget .bigg-likes,
+.tz_recentwork_widget .bigg-likes,
+.tz_blog_widget .bigg-likes,
+.home div#the_body #slider .excerpt .bigg-likes,
+.archive div#the_body #slider .excerpt .bigg-likes { display: none; } /* Hide Bigg Share in custom post widget and sliders in themes */
