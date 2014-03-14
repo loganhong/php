@@ -29,7 +29,9 @@
 		else
 		{
 			// $un=trim($_POST['username']);
-			$un=mysql_real_escape_string(trim($_POST['username']),$dbc);
+			// 
+			//$un=mysql_real_escape_string(trim($_POST['username']),$dbc);
+			$un=$dbc->real_escape_string(trim($_POST['username']));
 		}
 		
 		if (empty($_POST['email'])) {
@@ -37,7 +39,8 @@
 		}
 		else
 		{
-			$e=mysql_real_escape_string(trim($_POST['email']),$dbc);
+			// $e=mysql_real_escape_string(trim($_POST['email']),$dbc);
+			 $e=$dbc->real_escape_string(trim($_POST['email']));
 		}
 
 		if (!empty($_POST['pass1'])) {
@@ -47,7 +50,7 @@
 			}
 			else
 			{
-				$p=mysql_real_escape_string(trim($_POST['pass2']),$dbc);
+				$p=$dbc->real_escape_string(trim($_POST['pass2']));
 			}
 			# code...
 		}
@@ -61,8 +64,8 @@
 			// echo "59";
   
   			$q="select * from users where email='$e'";
-  			$r=mysql_query($q,$dbc);
-  			$num=mysql_num_rows($r);
+  			$r=$dbc->query($q);
+  			$num=$r->num_rows;
   			if ($num>0) {
   				echo "email：$e has exist。";
   			}
@@ -71,7 +74,7 @@
 				$q="insert into users(username,email,pass) values('$un','$e',sha1('$p'))";
 				//echo $q;
 
-				$r=mysql_query($q,$dbc);
+				$r=$dbc->query($q);
 				if ($r) {
 					echo '
 	<h1>Thank you!</h1>
@@ -79,7 +82,7 @@
 	';
 				}
 				else{
-					echo mysql_error($dbc);
+					echo $dbc->error;
 					echo '
 	<h1>System error</h1>
 	<p class="error">
@@ -89,7 +92,7 @@
 	';
 				}
 			}
-			mysql_close($dbc);
+			$dbc->close();
 
 			include('includes/footer.html');
 			exit();

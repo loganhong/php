@@ -26,7 +26,7 @@
 		else
 		{
 			// $un=trim($_POST['username']);
-			$un=mysql_real_escape_string(trim($_POST['username']),$dbc);
+			$un=$dbc->real_escape_string(trim($_POST['username']));
 		}
 		
 		if (empty($_POST['email'])) {
@@ -34,15 +34,15 @@
 		}
 		else
 		{
-			$e=mysql_real_escape_string(trim($_POST['email']),$dbc);
+			$e=$dbc->real_escape_string(trim($_POST['email']));
 		}
 		if (empty($errors)) {
 		 
 			$q='update users set username="'.$un.'" , email="'.$e.'" where id='.$id;
 			echo $q;
-			$r=@mysql_query($q,$dbc);
+			$r=$dbc->query($q);
 			
-			if (mysql_affected_rows($dbc)==1) {
+			if ($dbc->affected_rows==1) {
 				echo '<p>		The user has been update.';
 			}
 			else
@@ -51,7 +51,7 @@
 		<p class="error">The user could not be update due to a system error.</p>
 		';
 				echo '
-		<p>'.mysql_error($dbc).'</p>
+		<p>'.$dbc->error.'</p>
 		';
 			}
 		}
@@ -64,21 +64,23 @@
 	else
 	{
 		$q="select * from users where id=$id";
-		$r=@mysql_query($q,$dbc);
-		if (mysql_num_rows($r)==1) {
-			$row=mysql_fetch_array($r);
+		$r=$dbc->query($q);
+		if ($r->num_rows==1) {
+			$row=$r->fetch_array();
 			echo '
 		<h3>Username : '.$row['username'].'</h3>
 		';
 			echo '
 		<form action="edit_user.php" method="post">
+		username
 			<input type="text" name="username" value="'.$row['username'].'" />
-			Yes
+			<br/> email
 			<input type="text" name="email" value="'.$row['email'].'" />
-			No
+			 
 			<input type="hidden" name="id" value="'.$id.'" />
+			<br />
 			<input type="submit" name="submit" vaule="submit" />
-		</form>
+		</form> 
 		';
 		}
 		else
@@ -88,6 +90,6 @@
 		"';
 		}
 	}
-	mysql_close($dbc);
+	$dbc->close;
 	include('includes/footer.html');
 ?>

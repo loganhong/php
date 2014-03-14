@@ -21,14 +21,14 @@
 	if ($_SERVER['REQUEST_METHOD']=='POST') {
 		if ($_POST['sure']=='Yes') {
 			$q="delete from users where id=$id limit 1";
-			$r=@mysql_query($q,$dbc);
-			if (mysql_affected_rows($dbc)==1) {
+			$r=$dbc->query($q);
+			if ($dbc->affected_rows==1) {
 				echo '<p>The user has been deleted.';
 			}
 			else
 			{
 				echo '<p class="error">The user could not be deleted due to a system error.</p>';
-				echo '<p>'.mysql_error($dbc).'</p>';
+				echo '<p>'.$dbc->error.'</p>';
 			}
 		}
 		else
@@ -40,9 +40,9 @@ echo "the user has not been deleted";
 	else
 	{
 		$q="select * from users where id=$id";
-		$r=@mysql_query($q,$dbc);
-		if (mysql_num_rows($r)==1) {
-			$row=mysql_fetch_array($r);
+		$r=$dbc->query($q);
+		if ($r->num_rows==1) {
+			$row=$r->fetch_array();
 			echo '<h3>Username : '.$row['username'].'</h3>';
 			echo '<form action="delete_user.php" method="post">
 			<input type="radio" name="sure" value="Yes" /> Yes
@@ -56,6 +56,6 @@ echo "the user has not been deleted";
 			echo '<p class="error">This page has been accessed in error.</p>"';
 		}
 	}
-	mysql_close($dbc);
+	$dbc->close;
 	include('includes/footer.html');
 ?>

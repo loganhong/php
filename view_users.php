@@ -11,8 +11,8 @@
 	else
 	{
 		$q="SELECT count(1) FROM users";
-		$r=@mysql_query($q,$dbc);
-		$row=@mysql_fetch_array($r);
+		$r=$dbc->query($q);
+		$row= $r->fetch_array();
 		$record=$row[0];
 
 		if ($record>$display) {
@@ -31,8 +31,8 @@
 
 	$q="SELECT * from users order by createdate asc limit $start,$display";
 
-	$r=@mysql_query($q,$dbc);
-	$num=mysql_num_rows($r);
+	$r=$dbc->query($q);
+	$num=$r->num_rows;
 	if ($num>0) {
 		echo '<table align="center" cellspacing="3" cellpadding="3" width="75%">
 			<tr>
@@ -45,7 +45,7 @@
 			</tr>
 		';
 		$bg='#eeeeee';
-		while ($row=mysql_fetch_array($r,MYSQL_ASSOC)) {
+		while ($row=$r->fetch_array(MYSQL_ASSOC)) {
 			$bg=($bg=='#eeeeee'?'#fffff':'#eeeeee');
 		echo '<tr bgcolor="'.$bg.'">
 			<td align="left"><a href="edit_user.php?id='.$row['id'].'">edit</a></td>
@@ -57,14 +57,16 @@
 			</tr>';
 		}
 		echo "</table>";
-		mysql_free_result($r);
+		$r->free_result;
+		
 	}
 	else
 	{
 		echo '<p class="error">The current users could not be retrieved. We apologize for any inconvenience.</p>';		
 		echo '<p>'.mysql_error($dbc).'<br /> <br /> Query：'.$q.'</p>';
 	}
-	mysql_close($dbc);
+	$dbc->close();
+	
 	if ($pages>1) {
 		echo '<br /><p>';
 		$currentPage=($start/$display)+1;

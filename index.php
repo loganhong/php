@@ -22,7 +22,7 @@ Volutpat at varius sed sollicitudin et, arcu. Vivamus viverra. Nullam turpis. Ve
 <!-- End of the page-specific content. -->
 <?php 
 	create_ad();
-echo phpinfo();
+
 	include('includes/footer.html');
 	
 ?>
