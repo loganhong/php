@@ -74,6 +74,7 @@ body {
 /*Content*/
 .content {
 	background-color: #FFFFFF;
+	line-height: 24px;
 }
 .mainpage {
 	width:450px;
@@ -117,18 +118,26 @@ h1, h2, h3, h4, h5 {
 {
 	visibility: visible
 }
+
+.mainpagehover
+{
+	 border: 1px solid #efefef;
+	 margin: 2px 0px;
+}
+
 .content_title
 {
 	font-size:18px;
-	padding-top: 20px;
+	padding-top: 10px;
 	padding-bottom: 5px;
 	border-bottom: 1px solid #B52E10;
 }
-.content_title a,.content_title a:hover,.content_title a:visited
+.content_title a,.content_title a:hover,.content_title a:visited,.content_title span
 {
 
 	text-decoration:none; 
 	color: #B32C0E;
+	padding-top: 2px;
 }
 
 .bigg-read-more {
@@ -170,7 +179,8 @@ h1, h2, h3, h4, h5 {
 .sidebar {
 	margin:0px 0px 0px 0px;
 	width: 225px;
-	float: right;
+	position: absolute;
+	margin-left: 475px;
 }
 
 /*Sidemenu*/

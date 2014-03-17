@@ -1,9 +1,6 @@
 <div class="sidebar">
 	<ul class="menu">
 		<li>
-			<h2>Menu</h2>
-		</li>
-		<li>
 			<ul>
 				<li>
 					<a href="#">Link a   Website</a>

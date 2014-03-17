@@ -1,16 +1,26 @@
-<div class="content">
-	<?php include('includes/article_menu.php');?>
-	<div class="mainpage">
+<?php 
+	include('includes/article_menu.php');
+	include('includes/base.php');
+	require(dirname(__FILE__).'../../mysql_connect.php');
+	if (!empty($_GET["id"])) {
+		$id=$_GET["id"];
+	}
+	$q="SELECT * FROM article where id=$id";
 
-		<h2>Welcome to Our Website!</h2>
+	$r=$dbc->query($q);
 
-		<p>
-			Zonnebank en zonnestudios is a  "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-			<br/>
-			Zonnebank en zonnestudios is a  "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-			<br/>
-			Zonnebank en zonnestudios is a  "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-		</p>
-
-	</div>
-</div>
+	if ($r->num_rows>0) {
+		$row=$r->fetch_array();
+ 
+		 echo '
+		<div class="mainpage">
+			<div class="content_title">
+			<span>	'.$row["title"].'</span>
+			</div>
+			<div class="content">
+			'.$row["content"].'
+			</div>
+		</div>
+		';
+	}
+?>	

@@ -1,33 +1,33 @@
-<div class="content">
-	<?php include('includes/article_menu.php');?>
+<?php 
+	include('includes/base.php');
+	require(dirname(__FILE__).'../../mysql_connect.php');
+	$q="SELECT * FROM article";
+	$r=$dbc->query($q);
+	$util=new base_util();
+	while ($row=$r->fetch_array(MYSQL_ASSOC)) {
+		echo '
 	<div class="mainpage">
 		<div class="content_title">
-		<a  href="#">Welcome to Our Website!</a>
+			<a href="article.php?id='.$row["id"].'" title="'.$row["title"].'">'.$util->subString($row["title"], 0,30).'</a>
 		</div>
-		<p>
-			Zonnebank en zonnestudios is a  "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-			<a class="bigg-read-more" href="#"></a>
-		</p>
-
-	</div>
-	<div class="mainpage">
-		<div class="content_title">
-		<a  href="#">Welcome to Our Website!</a>
+		<div class="content">
+		'.$util->subString($row["content"],0,300).'
+		<a class="bigg-read-more" href="#"></a>
 		</div>
-		<p>
-			Zonnebank en zonnestudios is a  "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-			<a class="bigg-read-more" href="#"></a>
-		</p>
-
 	</div>
-	<div class="mainpage">
-		<div class="content_title">
-		<a  href="#">Welcome to Our Website!</a>
-		</div>
-		<p>
-			Zonnebank en zonnestudios is a  "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-			<a class="bigg-read-more" href="#"></a>
-		</p>
+	';
+	}
+	include('includes/article_menu.php');
+	
+?>	
+<script type="text/javascript">
+(function(){
+	$(".mainpage").mouseenter(function () {
+            $(this).addClass('mainpagehover');
+        });
 
-	</div>
-</div>
+    $(".mainpage").mouseleave(function () {
+        $(this).removeClass('mainpagehover');
+    });
+})();	 
+</script>
