@@ -12,7 +12,7 @@
 	{
 		$q="SELECT count(1) FROM users";
 		$r=$dbc->query($q);
-		$row= $r->fetch_array();
+		$row= $r->fetch_array;
 		$record=$row[0];
 
 		if ($record>$display) {
