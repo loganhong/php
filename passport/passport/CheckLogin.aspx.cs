@@ -16,11 +16,11 @@ namespace passport
 
             if (CookieFactory.CheckValueIsExist(sid, us) && us != null && sid != null)
             {
-                Response.Write("us:" + us + "<br/> sid: " + sid + "has exist.");
+                Response.Write("us:" + us + "<br/> sid: " + sid + "<br/>has exist.");
             }
             else
             {
-                Response.Write("us:" + us + "<br/> sid: " + sid + "do not exist.");
+                Response.Write("us:" + us + "<br/> sid: " + sid + "<br/>do not exist.");
             }
         }
     }

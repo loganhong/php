@@ -3,3 +3,7 @@ D:\LoganHong\loganSite\passport\passport\bin\passport.pdb
 D:\LoganHong\loganSite\passport\passport\obj\Debug\passport.csprojResolveAssemblyReference.cache
 D:\LoganHong\loganSite\passport\passport\obj\Debug\passport.dll
 D:\LoganHong\loganSite\passport\passport\obj\Debug\passport.pdb
+D:\LoganHong\loganSite\passport\passport\bin\passport.dll.config
+D:\LoganHong\loganSite\passport\passport\bin\Memcached.ClientLibrary.dll
+D:\LoganHong\loganSite\passport\passport\bin\log4net.dll
+D:\LoganHong\loganSite\passport\passport\bin\ICSharpCode.SharpZipLib.dll
