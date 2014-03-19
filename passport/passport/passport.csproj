@@ -39,13 +39,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>refdll\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\..\..\..\vsts\JuFine\03_Code\RefDLL\Memcached\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>refdll\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\vsts\JuFine\03_Code\RefDLL\Memcached\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Memcached.ClientLibrary">
-      <HintPath>refdll\Memcached.ClientLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\vsts\JuFine\03_Code\RefDLL\Memcached\Memcached.ClientLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
